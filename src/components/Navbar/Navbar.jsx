@@ -1,6 +1,7 @@
 import React from "react";
 import { IoMdSearch } from "react-icons/io";
-import { FaCartShopping } from "react-icons/fa6";
+import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
+import DarkMode from "./DarkMode";
 
 const MenuLinks = [
   {
@@ -24,6 +25,13 @@ const MenuLinks = [
     link: "/#blog",
   },
 ];
+const DropDownLinks = [
+  {
+    id:1,
+    name:"Trending Products",
+    
+  }
+]
 
 function Navbar() {
   return (
@@ -50,6 +58,23 @@ function Navbar() {
                     </a>
                   </li>
                 ))}
+                <li className="relative cusor-pointer group">
+                  <a href="#" className=" flex items-center gap-[2px] fnt-semibold text-gray-500 dark:hover:text-white py-2">
+                    Quick Links
+                  <span>
+                    <FaCaretDown className=" group-hover:rtate-180 duration-300 "/>
+                  </span>
+                  </a>
+                  <div>
+                    <ul>
+                      {
+                        DropDownLinks.map((data,index)=>(
+                          <li></li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -70,9 +95,9 @@ function Navbar() {
                 4
               </div>
             </button>
-            {/* Dark Mode Section */}
-            <div className="w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs">
-              4
+            
+            <div>
+              <DarkMode/>
             </div>
           </div>
         </div>
