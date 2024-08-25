@@ -4,11 +4,7 @@ import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
 import DarkMode from "./DarkMode";
 
 const MenuLinks = [
-  {
-    id: 1,
-    name: "Home",
-    link: "/#",
-  },
+  { id: 1, name: "Home", link: "/#" },
   {
     id: 2,
     name: "Shop",
@@ -25,13 +21,24 @@ const MenuLinks = [
     link: "/#blog",
   },
 ];
+
 const DropDownLinks = [
   {
-    id:1,
-    name:"Trending Products",
-    
-  }
-]
+    id: 1,
+    name: "Trending Products",
+    link: "/#",
+  },
+  {
+    id: 2,
+    name: "Best Selling",
+    link: "/#",
+  },
+  {
+    id: 3,
+    name: "Top Rated",
+    link: "/#",
+  },
+];
 
 function Navbar() {
   return (
@@ -58,20 +65,28 @@ function Navbar() {
                     </a>
                   </li>
                 ))}
-                <li className="relative cusor-pointer group">
-                  <a href="#" className=" flex items-center gap-[2px] fnt-semibold text-gray-500 dark:hover:text-white py-2">
+                <li className="relative cursor-pointer group">
+                  <a
+                    href="#"
+                    className="flex items-center gap-[2px] font-semibold text-gray-500 dark:hover:text-white py-2"
+                  >
                     Quick Links
-                  <span>
-                    <FaCaretDown className=" group-hover:rtate-180 duration-300 "/>
-                  </span>
+                    <span>
+                      <FaCaretDown className="group-hover:rotate-180 duration-300" />
+                    </span>
                   </a>
-                  <div>
-                    <ul>
-                      {
-                        DropDownLinks.map((data,index)=>(
-                          <li></li>
-                        ))
-                      }
+                  <div className="absolute z-[9999] hidden group-hover:block w-[200px] rounded-md bg-white shadow-md dark:bg-gray-900">
+                    <ul className="space-y-2">
+                      {DropDownLinks.map((data) => (
+                        <li key={data.id}>
+                          <a
+                            href={data.link}
+                            className=" text-gray-500 dark:hover:text-white duration-200 inline-block w-full p-2 dark:text-white hover:bg-primary/20 rounded-md font-semibold"
+                          >
+                            {data.name}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </li>
@@ -81,11 +96,7 @@ function Navbar() {
           <div className="flex justify-between items-center gap-4">
             {/* Search Bar Section */}
             <div className="relative group hidden sm:block">
-              <input
-                type="text"
-                placeholder="Search"
-                className="search-bar"
-              />
+              <input type="text" placeholder="Search" className="search-bar" />
               <IoMdSearch className="text-xl text-gray-600 group-hover:text-primary dark:text-gray-400 absolute top-1/2 -translate-y-1/2 right-3 duration-200" />
             </div>
             {/* Order Button Section */}
@@ -95,9 +106,8 @@ function Navbar() {
                 4
               </div>
             </button>
-            
             <div>
-              <DarkMode/>
+              <DarkMode />
             </div>
           </div>
         </div>
